@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KEYRADDIIN PERSONAL AI</title>
+
+    <meta name="theme-color" content="#080e1c">
+    <meta name="description"
+          content="KEYRADDIIN PERSONAL AI - Your Personal Intelligent Assistant">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="manifest" href="../pwa/manifest.json">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">K</div>
+
+            <div class="brand-info">
+                <h2>KEYRADDIIN</h2>
+                <span>PERSONAL AI</span>
+            </div>
+
+            <button class="close-sidebar" onclick="toggleSidebar()">×</button>
+
+        </div>
+
+        <button class="new-chat" onclick="newChat()">
+            <span>＋</span> New Chat
+        </button>
+
+        <div class="sidebar-section">
+
+            <p class="section-title">WORKSPACE</p>
+
+            <button class="menu-item active">
+                <span>◈</span> AI Assistant
+            </button>
+
+            <button class="menu-item">
+                <span>▤</span> PDF Reader
+            </button>
+
+            <button class="menu-item">
+                <span>⌘</span> Coding Assistant
+            </button>
+
+            <button class="menu-item">
+                <span>▣</span> Learning Mode
+            </button>
+
+        </div>
+
+        <div class="sidebar-section">
+
+            <p class="section-title">LIBRARY</p>
+
+            <button class="menu-item">
+                <span>◷</span> Chat History
+            </button>
+
+            <button class="menu-item">
+                <span>♧</span> AI Memory
+            </button>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="profile">
+
+                <div class="profile-avatar">K</div>
+
+                <div class="profile-info">
+                    <h4>KEYRADDIIN</h4>
+                    <span>Personal Workspace</span>
+                </div>
+
+                <button class="settings-btn">⚙</button>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div class="header-left">
+
+                <button class="menu-toggle"
+                        onclick="toggleSidebar()">☰</button>
+
+                <div>
+                    <h3>AI Assistant</h3>
+                    <span class="online-status">
+                        <i></i> Online AI
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="header-right">
+
+                <button class="icon-button" title="Settings">⚙</button>
+
+                <div class="user-avatar">K</div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CHAT AREA -->
+
+        <section class="chat-area" id="chatArea">
+
+            <div class="welcome-screen" id="welcomeScreen">
+
+                <div class="ai-logo">
+                    <span>✦</span>
+                </div>
+
+                <p class="welcome-label">
+                    YOUR PERSONAL INTELLIGENT ASSISTANT
+                </p>
+
+                <h1>
+                    Hello, <span>Keyraddiin.</span>
+                </h1>
+
+                <h2>How can I help you today?</h2>
+
+                <p class="welcome-description">
+                    Ask anything. Learn something new.
+                    Build something extraordinary.
+                </p>
+
+
+                <!-- SUGGESTIONS -->
+
+                <div class="suggestion-grid">
+
+                    <button class="suggestion"
+                            onclick="useSuggestion('Teach me Software Engineering from the beginning.')">
+
+                        <span>💻</span>
+
+                        <div>
+                            <strong>Learn Technology</strong>
+                            <small>Explore Software Engineering</small>
+                        </div>
+
+                    </button>
+
+
+                    <button class="suggestion"
+                            onclick="useSuggestion('Help me write a professional HTML website.')">
+
+                        <span>⌨️</span>
+
+                        <div>
+                            <strong>Write Code</strong>
+                            <small>Create websites and applications</small>
+                        </div>
+
+                    </button>
+
+
+                    <button class="suggestion"
+                            onclick="useSuggestion('Explain an important science topic in Afaan Oromoo and English.')">
+
+                        <span>🎓</span>
+
+                        <div>
+                            <strong>Study & Learn</strong>
+                            <small>Understand difficult subjects</small>
+                        </div>
+
+                    </button>
+
+
+                    <button class="suggestion"
+                            onclick="useSuggestion('Help me analyze a PDF document.')">
+
+                        <span>📚</span>
+
+                        <div>
+                            <strong>Analyze Documents</strong>
+                            <small>Read and understand PDF files</small>
+                        </div>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- MESSAGES -->
+
+            <div class="messages" id="messages"></div>
+
+        </section>
+
+
+        <!-- INPUT AREA -->
+
+        <footer class="input-section">
+
+            <div class="input-container">
+
+                <div class="input-toolbar">
+
+                    <button title="Attach PDF">＋</button>
+
+                    <span>Ask KEYRADDIIN AI anything</span>
+
+                    <select id="languageSelect">
+
+                        <option value="auto">Auto Language</option>
+                        <option value="om">Afaan Oromoo</option>
+                        <option value="en">English</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-row">
+
+                    <textarea
+                        id="userInput"
+                        placeholder="Message KEYRADDIIN PERSONAL AI..."
+                        rows="1"></textarea>
+
+                    <button class="send-button"
+                            id="sendButton"
+                            onclick="sendMessage()">
+
+                        ➤
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <p class="disclaimer">
+                KEYRADDIIN PERSONAL AI can make mistakes.
+                Verify important information.
+            </p>
+
+            <p class="footer-brand">
+                POWERED BY KEYRADDIIN MEDIA © 2026
+            </p>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
